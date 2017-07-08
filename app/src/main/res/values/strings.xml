@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MolabssGoogleAuth</string>
+    <string name="btnSignGoogle">Entrar com Google</string>
+</resources>
