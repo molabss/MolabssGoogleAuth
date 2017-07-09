@@ -3,12 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_margins"
     tools:context="br.com.molabss.googleauth.MainActivity">
 
     <com.google.android.gms.common.SignInButton
-        android:layout_centerHorizontal="true"
         android:id="@+id/btnSigninGoogle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSigninGoogle"
+        android:layout_centerHorizontal="true"
+        android:text="Sair" />
+
+    <TextView
+        android:id="@+id/mStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Entrou como:..."
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

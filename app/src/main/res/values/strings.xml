@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MolabssGoogleAuth</string>
     <string name="btnSignGoogle">Entrar com Google</string>
+    <string name="signed_in_fmt">Entrou como: %s</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="refresh_token">Get Fresh Token</string>
 </resources>

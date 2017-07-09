@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
@@ -26,8 +27,14 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // Dependency for Google Sign-In
+    compile 'com.google.android.gms:play-services-auth:11.0.2'
+
     compile 'com.jakewharton:butterknife:8.7.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
-    apply plugin: 'com.google.gms.google-services'
+
     testCompile 'junit:junit:4.12'
+
+    apply plugin: 'com.google.gms.google-services'
 }
