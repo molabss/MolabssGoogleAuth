@@ -22,10 +22,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+//https://developers.google.com/identity/sign-in/android/sign-in
+//https://github.com/googlesamples/google-services/blob/master/android/signin/app/src/main/java/com/google/samples/quickstart/signin/SignInActivity.java
+
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btnSigninGoogle)SignInButton btnSigninGoogle;
     @BindView(R.id.btnSignOut)Button btnSignOut;
+    @BindView(R.id.btnDisconnect)Button btnDisconnect;
     @BindView(R.id.mStatusTextView)TextView mStatusTextView;
     private static final int RC_SIGN_IN = 9001;
     GoogleApiClient mGoogleApiClient;
@@ -85,7 +89,22 @@ public class MainActivity extends AppCompatActivity {
                 if(status.isSuccess()){
                     mStatusTextView.setText(getString(R.string.sign_out));
                 }else {
-                    updateUI(false);
+                    mStatusTextView.setText("Erro ao sair: "+status.getStatusMessage());
+                }
+            }
+        });
+    }
+
+    @OnClick(R.id.btnDisconnect)
+    private void revokeAccess() {
+        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
+        new ResultCallback<Status>() {
+            @Override
+            public void onResult(Status status) {
+                if(status.isSuccess()){
+                    mStatusTextView.setText(getString(R.string.disconnect));
+                }else {
+                    mStatusTextView.setText("Erro ao sair: "+status.getStatusMessage());
                 }
             }
         });
@@ -97,16 +116,9 @@ public class MainActivity extends AppCompatActivity {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             accountName =  acct.getDisplayName();
-            updateUI(true);
-        } else {
-            // Signed out, show unauthenticated UI.
-            updateUI(false);
-        }
-    }
-    public void updateUI(boolean update){
-        if (update == true){
             mStatusTextView.setText(getString(R.string.signed_in_fmt, accountName));
         } else {
+            // Signed out, show unauthenticated UI.
             mStatusTextView.setText(getString(R.string.sign_out));
         }
     }

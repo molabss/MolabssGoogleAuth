@@ -20,6 +20,14 @@
         android:layout_centerHorizontal="true"
         android:text="Sair" />
 
+    <Button
+        android:id="@+id/btnDisconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSignOut"
+        android:layout_centerHorizontal="true"
+        android:text="Desconectar" />
+
     <TextView
         android:id="@+id/mStatusTextView"
         android:layout_width="wrap_content"
