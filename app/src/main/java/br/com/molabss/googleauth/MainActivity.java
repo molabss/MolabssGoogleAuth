@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnDisconnect)Button btnDisconnect;
     @BindView(R.id.mStatusTextView)TextView mStatusTextView;
     private static final int RC_SIGN_IN = 9001;
-    GoogleApiClient mGoogleApiClient;
-    String accountName = "";
+    private GoogleApiClient mGoogleApiClient;
+    private String accountName = "";
     private static final String TAG = "MainActivity";
 
     @Override
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnDisconnect)
-    private void revokeAccess() {
+    public void revokeAccess() {
         Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
         new ResultCallback<Status>() {
             @Override
@@ -116,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             accountName =  acct.getDisplayName();
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, accountName));
+            acct.getIdToken();
+            mStatusTextView.setText(getString(R.string.signed_in_fmt, accountName+"\n"+acct.getId()));
         } else {
             // Signed out, show unauthenticated UI.
             mStatusTextView.setText(getString(R.string.sign_out));
